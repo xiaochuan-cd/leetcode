@@ -12,16 +12,16 @@ class Solution:
 
                 if s[i] == p[j] or p[j] == '.':
                     j += 1
+
                 elif p[j] == '*':
                     if p[j+1] in [s[i], '.']:
 
                         if j+2 < len(p) and (self._isMatch(s[i:], p[j+2:] or self._isMatch(s[i+1:], p[j+2:]))):
                             return True
 
-                        if i+1 >= len(s):
+                        if i+1 >= len(s) or p[j+1] not in [s[i+1], '.']:
                             j += 2
-                        elif p[j+1] not in [s[i+1], '.']:
-                            j += 2
+
                     else:
                         j += 2
                         i -= 1
