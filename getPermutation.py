@@ -13,7 +13,7 @@ class Solution:
             for j in range(n):
                 if j+1 not in u:
                     _k0 = k0 + math.factorial(n-i-1)
-                    if _k0 > k-1:
+                    if _k0 >= k:
                         u[i] = j + 1
                         break
                     else:
