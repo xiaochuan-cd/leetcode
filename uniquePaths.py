@@ -1,7 +1,7 @@
 class Solution:
 
     def recursive(self, i, j):
-        c = self.d.get(i*100+j, -1)
+        c = self.d[i][j]
         if c != -1:
             return c
         c = 0
@@ -11,7 +11,7 @@ class Solution:
             c += self.recursive(i, j+1)
         if i == self.m - 1 and j == self.n - 1:
             c = 1
-        self.d[i*100+j] = c
+        self.d[i][j] = c
         return c
 
     def uniquePaths(self, m, n):
@@ -21,7 +21,8 @@ class Solution:
         :rtype: int
         """
 
-        self.m, self.n, self.d = m, n, {}
+        self.m, self.n, self.d = m, n, []
+        self.d = [[-1 for _ in range(self.n)] for _ in range(self.m)]
         return self.recursive(0, 0)
 
 
